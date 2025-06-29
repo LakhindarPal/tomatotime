@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tomato Time - Boost Your Productivity with Focus Sessions</title>
+  <meta name="description" content="A simple and effective online Pomodoro Timer to help you manage your time, improve focus, and boost productivity with customizable work and break intervals.">
+  <link rel="canonical" href="https://tomatotime.glitch.me/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tomatotime.glitch.me/">
+  <meta property="og:title" content="Tomato Time - Boost Your Productivity with Focus Sessions">
+  <meta property="og:description" content="A simple and effective online Pomodoro Timer to help you manage your time, improve focus, and boost productivity with customizable work and break intervals.">
+  <meta property="og:image" content="/assets/preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://tomatotime.glitch.me/">
+  <meta name="twitter:title" content="Tomato Time - Boost Your Productivity with Focus Sessions">
+  <meta name="twitter:description" content="Boost your focus and productivity! This customizable Pomodoro Timer helps you work smarter with timed sessions and breaks.">
+  <meta name="twitter:image" content="/assets/preview.jpg">
+  <link rel="icon" type="image/png" href="./assets/favicon.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&family=Space+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&family=Roboto+Slab:wght@400;700&family=Space+Mono:wght@400;700&display=swap">
+  </noscript>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+
+<body>
+  <main class="container">
+    <header>
+      <h1 class="logo">
+        <img src="/assets/logo.svg" alt="Pomodoro">
+      </h1>
+    </header>
+    
+    <nav class="mode-switcher">
+      <button class="mode-btn active" data-mode="pomodoro">pomodoro</button>
+      <button class="mode-btn" data-mode="shortBreak">short break</button>
+      <button class="mode-btn" data-mode="longBreak">long break</button>
+    </nav>
+    
+    <section class="timer-section">
+      <div class="timer-circle">
+        <svg class="progress-ring" width="100%" height="100%" viewBox="0 0 300 300">
+          <circle class="progress-ring-track" stroke="#272A52" stroke-width="15" fill="transparent" r="125" cx="150" cy="150" />
+          <circle class="progress-ring-bar" stroke="var(--primary-color)" stroke-width="15" fill="transparent" r="125" cx="150" cy="150" />
+        </svg>
+        <div class="timer-display">
+          <time id="time" datetime="PT25M00S">25:00</time>
+          <button id="pause-btn">PAUSE</button>
+        </div>
+      </div>
+      
+      <button class="settings-btn" aria-label="Settings">
+        <img src="./assets/icon-settings.svg" alt="Settings Icon">
+      </button>
+    </section>
+  </main>
+  
+  <dialog id="settings-modal" class="modal">
+    <div class="modal-content">
+      <header class="modal-header">
+        <h2>Settings</h2>
+        <button class="close-modal-btn" aria-label="Close settings">
+          <img src="./assets/icon-close.svg" alt="Close Icon">
+        </button>
+      </header>
+      <hr>
+      <section class="settings-section">
+        <fieldset class="time-inputs" id="time-inputs-container">
+          <legend>TIME (MINUTES)</legend>
+          <label>pomodoro
+            <div class="input-group">
+              <input type="number" id="pomodoro-input" value="25" min="1">
+              <div class="input-arrows">
+                <button class="arrow-up" data-target="pomodoro-input"><img src="./assets/icon-arrow-up.svg" alt="Up"></button>
+                <button class="arrow-down" data-target="pomodoro-input"><img src="./assets/icon-arrow-down.svg" alt="Down"></button>
+              </div>
+            </div>
+          </label>
+          <label>short break
+            <div class="input-group">
+              <input type="number" id="shortBreak-input" value="5" min="1">
+              <div class="input-arrows">
+                <button class="arrow-up" data-target="shortBreak-input"><img src="./assets/icon-arrow-up.svg" alt="Up"></button>
+                <button class="arrow-down" data-target="shortBreak-input"><img src="./assets/icon-arrow-down.svg" alt="Down"></button>
+              </div>
+            </div>
+          </label>
+          <label>long break
+            <div class="input-group">
+              <input type="number" id="longBreak-input" value="15" min="1">
+              <div class="input-arrows">
+                <button class="arrow-up" data-target="longBreak-input"><img src="./assets/icon-arrow-up.svg" alt="Up"></button>
+                <button class="arrow-down" data-target="longBreak-input"><img src="./assets/icon-arrow-down.svg" alt="Down"></button>
+              </div>
+            </div>
+          </label>
+        </fieldset>
+      </section>
+      <hr>
+      <section class="settings-section">
+        <fieldset class="font-options" id="font-options-container">
+          <legend>FONT</legend>
+          <button class="font-btn active" data-font="Kumbh Sans">Aa</button>
+          <button class="font-btn" data-font="Roboto Slab">Aa</button>
+          <button class="font-btn" data-font="Space Mono">Aa</button>
+        </fieldset>
+      </section>
+      <hr>
+      <section class="settings-section">
+        <fieldset class="color-options" id="color-options-container">
+          <legend>COLOR</legend>
+          <button class="color-btn active" data-color="#F87070"></button>
+          <button class="color-btn" data-color="#70F3F8"></button>
+          <button class="color-btn" data-color="#D881F8"></button>
+        </fieldset>
+      </section>
+      <footer>
+        <button id="apply-btn">Apply</button>
+      </footer>
+    </div>
+  </dialog>
+  
+</body>
+
+</html>
