@@ -16,7 +16,9 @@ This is a modern, intuitive, and highly customizable online Pomodoro Timer web a
 
 ## Overview
 
-### The ChallengeUsers should be able to:
+### The Challenge
+
+Users should be able to:
 
 - Set custom durations for Pomodoro sessions, short breaks, and long breaks.
 - Start, pause, and reset the timer.
